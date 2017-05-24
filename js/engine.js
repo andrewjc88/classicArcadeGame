@@ -159,6 +159,8 @@ var Engine = (function(global) {
      */
     function reset() {
         // noop
+        this.x = 0;
+        this.y = 0;
     }
 
     /* Go ahead and load all of the images we know we're going to need to
