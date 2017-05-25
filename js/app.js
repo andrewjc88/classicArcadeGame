@@ -61,13 +61,14 @@ Player.prototype.update = function(dt) {
 
 };
 
+//-------------------- render Player prototype --------------------
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     //drawBox(this.x + 8, this.y + 60, 77, 80, "red");
     drawBox(this.x + 8, this.y + 60, 77, 80, "red");
 };
 
-// Keeps player inside of game board and controls player movement size.
+//-------------------- Player control & limits --------------------
 Player.prototype.handleInput = function(inputKeyCode) {
     if (inputKeyCode === 'left' && this.x >= 101) {
         this.x -= 101;
@@ -83,18 +84,21 @@ Player.prototype.handleInput = function(inputKeyCode) {
     }
 };
 
+//-------------------- Player Win prototype --------------------
 Player.prototype.Win = function() {
     this.x = 202;
     this.y = 370;
     alert("You won!");
 }
 
+//-------------------- Player lose prototype --------------------
 Player.prototype.Lose = function() {
     this.x = 202;
     this.y = 370;
     alert("You Lose! Try again!");
 }
 
+//-------------------- Player Colision Prototype --------------------
 Player.prototype.checkCollisionsBugs = function() {
     for (var i = 0; i < allEnemies.length; i++) {
         var enemy = allEnemies[i];
@@ -104,7 +108,7 @@ Player.prototype.checkCollisionsBugs = function() {
     }
 };
 
-// Instantiates objects and puts them into array.
+//-------------------- Enemy enstantiate --------------------
 var bugOne = new Enemy(-101, -238, 300);
 var bugTwo = new Enemy(-101, -300, 503);
 var bugThree = new Enemy(-101, 98, 320);
@@ -112,11 +116,10 @@ var bugFour = new Enemy(-101, 171, 400);
 var bugFive = new Enemy(-101, 200, 432);
 var allEnemies = [bugOne, bugTwo, bugThree, bugFour, bugFive];
 
-// Places the player object in a variable called player
+//-------------------- Player variable --------------------
 var player = new Player();
 
-// This listens for key presses and sends the keys
-// Player.handleInput() method.
+//-------------------- Keypress listener --------------------
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
