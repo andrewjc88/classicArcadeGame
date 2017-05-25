@@ -17,3 +17,10 @@ It's somewhat sparse but I practiced a lot of object oriented programming with t
 
 Best, regards <br>
 Andrew Cornell
+
+## To Do
+---
+
++ Refactor render methods to one method with x, y, sprite and call method.
++ Create constant variables for Tile_width and tile height.
++ Implement collision detection as Enemy method instead of allEnemies array.
