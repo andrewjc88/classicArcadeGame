@@ -55,6 +55,7 @@ Player.prototype.render = function() {
 };
 
 //-------------------- Player control & limits --------------------
+// Moves player on keypress and sets bounds for gameboard.
 Player.prototype.handleInput = function(inputKeyCode) {
     if (inputKeyCode === 'left' && this.x >= 101) {
         this.x -= 101;
@@ -86,8 +87,10 @@ Player.prototype.Lose = function() {
 
 //-------------------- Player Colision Prototype --------------------
 Player.prototype.checkCollisionsBugs = function() {
+
     for (var i = 0; i < allEnemies.length; i++) {
         var enemy = allEnemies[i];
+        // Checks that collision occur on each enemy for each state.
         if (enemy.x < (this.x + 8) + this.width &&
         enemy.x + enemy.width > (this.x + 8) &&
         (enemy.y + 76) < (this.y + 60) + this.height &&
