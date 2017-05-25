@@ -1,12 +1,3 @@
-//-------------------- Draw box for colision testing --------------------
-function drawBox(x, y, width, height, color) {
-    ctx.beginPath();
-    ctx.rect(x, y, width, height);
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = color;
-    ctx.stroke();
-}
-
 //-------------------- Enemies player class --------------------
 var Enemy = function(x, y, Speed) {
 
@@ -38,8 +29,6 @@ Enemy.prototype.update = function(dt) {
 //-------------------- Draws enemies on the screen --------------------
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    drawBox(this.x, this.y + 76 , 100, 67, "yellow");
-
 };
 
 //-------------------- Player Class --------------------
@@ -47,9 +36,9 @@ var Player = function(x, y, speed) {
     this.sprite = 'images/char-boy.png';
     this.x = 202;
     this.y = 370;
-    this.speed = 2;
-    width = 70;
-    height = 75;
+    this.speed = 100;
+    this.width = 70;
+    this.height = 75;
 }
 
 //-------------------- Update player prototype --------------------
@@ -58,14 +47,11 @@ Player.prototype.update = function(dt) {
     if (this.y <= -50){
         this.Win();
     }
-
 };
 
 //-------------------- render Player prototype --------------------
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    //drawBox(this.x + 8, this.y + 60, 77, 80, "red");
-    drawBox(this.x + 8, this.y + 60, 77, 80, "red");
 };
 
 //-------------------- Player control & limits --------------------
@@ -102,8 +88,11 @@ Player.prototype.Lose = function() {
 Player.prototype.checkCollisionsBugs = function() {
     for (var i = 0; i < allEnemies.length; i++) {
         var enemy = allEnemies[i];
-        if (enemy.x < (this.x + 8) + this.width && enemy.x + enemy.width > (this.x + 8) && (enemy.y + 76) < (this.y + 60) + this.height && enemy.height + (enemy.y + 76) > (this.y + 60)) {
-            Win();
+        if (enemy.x < (this.x + 8) + this.width &&
+        enemy.x + enemy.width > (this.x + 8) &&
+        (enemy.y + 76) < (this.y + 60) + this.height &&
+        enemy.height + (enemy.y + 76) > (this.y + 60)) {
+            this.Lose();
         }
     }
 };
