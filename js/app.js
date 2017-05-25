@@ -39,14 +39,14 @@ var Player = function(x, y, speed) {
     this.speed = 100;
     this.width = 70;
     this.height = 75;
-}
+};
 
 //-------------------- Update player prototype --------------------
 Player.prototype.update = function(dt) {
     this.checkCollisionsBugs();
-    if (this.y <= -50){
+    if (this.y <= 0) {
         this.Win();
-    }
+    };
 };
 
 //-------------------- render Player prototype --------------------
@@ -60,7 +60,7 @@ Player.prototype.handleInput = function(inputKeyCode) {
     if (inputKeyCode === 'left' && this.x >= 101) {
         this.x -= 101;
     }
-    else if (inputKeyCode === 'up' && this.y >= -83) {
+    else if (inputKeyCode === 'up' && this.y >= 0) {
         this.y -= 83;
     }
     else if (inputKeyCode === 'right' && this.x <= 304) {
@@ -76,14 +76,14 @@ Player.prototype.Win = function() {
     this.x = 202;
     this.y = 370;
     alert("You won!");
-}
+};
 
 //-------------------- Player lose prototype --------------------
 Player.prototype.Lose = function() {
     this.x = 202;
     this.y = 370;
     alert("You Lose! Try again!");
-}
+};
 
 //-------------------- Player Colision Prototype --------------------
 Player.prototype.checkCollisionsBugs = function() {

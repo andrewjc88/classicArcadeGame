@@ -1,15 +1,19 @@
-Hi there and welcome to my classic arcade game project.
+# Andrew Cornell's  Classic Arcade Game Clone.
 
-It's somewhat sparse but I practiced a lot of object
-oriented programming with this game.
+---
+### Hi there and welcome to my classic arcade game project.
 
-To play simply use your arrow keys on your keyboard to move
-the character to the other side of the screen without the
-enemy bugs touching your character. You can also move from
-right to left of the board to help win the game! Feel free
-to reach out to me with any questions or concerns. The
-settings are set to be pretty hard! Enjoy!
+It's somewhat sparse but I practiced a lot of object oriented programming with this game.
 
+---
 
+## How To Play
+1. Open index.html with web browser of choice.
+2. Avoid colliding with enemy bugs.
+3. Use arrow keys to maneuver character across screen to water.
+
+---
+ Thank you for looking and feel free to reach out to me via [Email](andrewjc88@gmail.com) with any questions or concerns. The settings are set to be pretty hard! Enjoy!
+
+Best, regards <br>
 Andrew Cornell
-andrewjc88@gmail.com
