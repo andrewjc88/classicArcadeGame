@@ -1,7 +1,8 @@
-//-------------------- Enemies player class --------------------
-var Enemy = function(x, y, Speed) {
-
-    this.sprite = 'images/enemy-bug.png';
+var CharacterMaster = function(x, y, speed, type) {
+    this.type = type;
+    this.sprite = (type === "enemy")
+        ? 'images/enemy-bug.png'
+        : 'images/char-boy.png';
     this.x = x;
     this.y = y;
     this.speed = Speed;
@@ -9,6 +10,11 @@ var Enemy = function(x, y, Speed) {
     this.height = 67;
 
 };
+
+//-------------------- Enemies player class --------------------
+var Enemy = function(x, y, speed) {
+    return CharacterMaster(x, y, speed, 'enemy');
+}
 
 //-------------------- Updates enemy position --------------------
 Enemy.prototype.update = function(dt) {
@@ -27,18 +33,13 @@ Enemy.prototype.update = function(dt) {
 };
 
 //-------------------- Draws enemies on the screen --------------------
-Enemy.prototype.render = function() {
+MasterCharacter.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
 //-------------------- Player Class --------------------
 var Player = function(x, y, speed) {
-    this.sprite = 'images/char-boy.png';
-    this.x = 202;
-    this.y = 370;
-    this.speed = 100;
-    this.width = 70;
-    this.height = 75;
+    return CharacterMaster(x, y, speed, 'enemy');
 };
 
 //-------------------- Update player prototype --------------------
@@ -49,10 +50,6 @@ Player.prototype.update = function(dt) {
     };
 };
 
-//-------------------- render Player prototype --------------------
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
 
 //-------------------- Player control & limits --------------------
 // Moves player on keypress and sets bounds for gameboard.
