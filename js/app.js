@@ -1,8 +1,7 @@
-var CharacterMaster = function(x, y, speed, type) {
-    this.type = type;
-    this.sprite = (type === "enemy")
-        ? 'images/enemy-bug.png'
-        : 'images/char-boy.png';
+//-------------------- Enemies player class --------------------
+var Enemy = function(x, y, Speed) {
+
+    this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
     this.speed = Speed;
@@ -11,10 +10,25 @@ var CharacterMaster = function(x, y, speed, type) {
 
 };
 
-//-------------------- Enemies player class --------------------
-var Enemy = function(x, y, speed) {
-    return CharacterMaster(x, y, speed, 'enemy');
-}
+//-------------------- Player Class --------------------
+var Player = function(x, y, speed) {
+    this.sprite = 'images/char-boy.png';
+    this.x = 202;
+    this.y = 370;
+    this.speed = 100;
+    this.width = 70;
+    this.height = 75;
+};
+
+//-------------------- Draws enemies on the screen --------------------
+Enemy.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+//-------------------- render Player prototype --------------------
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
 
 //-------------------- Updates enemy position --------------------
 Enemy.prototype.update = function(dt) {
@@ -30,16 +44,6 @@ Enemy.prototype.update = function(dt) {
         this.y = Math.floor(Math.random() * (280 - 0 + 1) + 0);
         this.speed = Math.floor(Math.random() * (600 - 400 + 1) + 400);
     }
-};
-
-//-------------------- Draws enemies on the screen --------------------
-MasterCharacter.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-
-//-------------------- Player Class --------------------
-var Player = function(x, y, speed) {
-    return CharacterMaster(x, y, speed, 'enemy');
 };
 
 //-------------------- Update player prototype --------------------
